@@ -1,0 +1,5 @@
+#product_background {
+    background-image: url("product_background.jpg");
+    background-repeat: repeat;
+    background-position: -100px;
+}

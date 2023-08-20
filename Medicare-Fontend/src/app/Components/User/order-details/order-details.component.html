@@ -1,0 +1,164 @@
+<div id="shippment_background">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto mt-4 mb-5">
+                <div class="card"
+                    style=" font-size: large; font-family: Arial, Helvetica, sans-serif;background-color: rgba(255, 255, 255, 0.5);">
+                    <div class="card-header" style=" font-family: Arial, Helvetica, sans-serif; font-size: medium;">
+                        <h4 class="text-center" style=" font-size: 200%; font-family: Arial, Helvetica, sans-serif;">
+                            Order
+                            Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form #orderDetailForm="ngForm" (ngSubmit)="onSubmit()">
+
+                            <div class="form-group">
+                                <label for="fname">First Name:</label>
+                                <input type="text" class="form-control" required #fname="ngModel"
+                                    placeholder="First name" id="fname" name="firstName"
+                                    [(ngModel)]="orderDetails.firstName" ngModel>
+                                <span *ngIf="fname.invalid && fname.touched" style="color: red">Invalid First
+                                    Name</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lname">Last Name:</label>
+                                <input type="text" required #lname="ngModel" class="form-control"
+                                    placeholder="Last name" id="lname" name="lastName"
+                                    [(ngModel)]="orderDetails.lastName" ngModel>
+                                <span *ngIf="lname.invalid && lname.touched" style="color: red">Invalid Last Name</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="add">Shipping Address:</label>
+                                <textarea class="form-control" rows="2" id="add" name="address"
+                                    [(ngModel)]="orderDetails.address" #add="ngModel" placeholder="Shipping address"
+                                    required ngModel></textarea>
+                                <span *ngIf="add.invalid && add.touched" style="color: red">Invalid Shipping
+                                    Address.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pc">Zip Code:</label>
+                                <input type="text" required #pc="ngModel" class="form-control" placeholder="Zipcode" id="pc" name="PinCode"
+                                    [(ngModel)]="orderDetails.pinCode" ngModel>
+                                <span *ngIf="pc.invalid && pc.touched" style="color: red">Invalid Zip Code</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dt">District:</label>
+                                <input type="text" required #dt="ngModel" class="form-control" placeholder="District"
+                                    id="dt" name="District" [(ngModel)]="orderDetails.district" ngModel>
+                                <span *ngIf="dt.invalid && dt.touched" style="color: red">Invalid District Name</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ste">State:</label>
+                                <input type="text" required #ste="ngModel" class="form-control" placeholder="State"
+                                    id="ste" name="State" [(ngModel)]="orderDetails.state" ngModel>
+                                <span *ngIf="ste.invalid && ste.touched" style="color: red">Invalid State</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phn">Contact Number:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">+34</span>
+                                    </div>
+                                    <input type="text" required #phone="ngModel" class="form-control"
+                                        placeholder="Phone number" id="phn" name="contact" minlength="9" maxlength="9"
+                                        [(ngModel)]="orderDetails.contact" ngModel>
+                                </div>
+                                <span *ngIf="phone.invalid && phone.touched" style="color:red">The phone number is
+                                    invalid</span>
+                            </div>
+
+
+                            <div class="text-center">
+                                <button type="button" class="btn btn-success border border-dark btn-lg"
+                                    [disabled]="orderDetailForm.invalid" data-toggle="modal" data-target="#myModal">Pay
+                                    Now {{paidAmount | currency:
+                                    'EUR'}}</button>
+                            </div>
+
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal" style="border-style: groove;">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Card details</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+
+
+                                            <div class="form-group">
+                                                <label for="crd">Card number:</label>
+                                                <input type="text" pattern="\d*" class="form-control" id="crd" minlength="15"
+                                                    maxlength="16" placeholder="Enter the card number" name="cnumber"
+                                                    required>
+                                                <div class="valid-feedback">Valid.</div>
+                                                <div class="invalid-feedback">Please fill out this field.
+                                                </div>
+                                            </div>
+
+                                            <div class="was-validated">
+                                                <div class="form-group">
+                                                    <label for="uname">Cardholder Name</label>
+                                                    <input type="text" class="form-control" id="uname"
+                                                        placeholder="Cardholder Name" name="cname" required>
+                                                    <div class="valid-feedback">Valid.</div>
+                                                    <div class="invalid-feedback">Please fill out this field.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="cvvn">CVV number:</label>
+                                                    <input type="password" class="form-control" id="cvvn" maxlength="3"
+                                                        minlength="3" placeholder="CVV" name="cvv" required>
+                                                    <div class="valid-feedback">Valid.</div>
+                                                    <div class="invalid-feedback">Please fill out this field.
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="checkbox" name="remember"
+                                                            required> I agree to the terms and
+                                                        conditions.
+                                                        <div class="valid-feedback">Valid.</div>
+                                                        <div class="invalid-feedback">Check this checkbox to
+                                                            continue.</div>
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <h5 class="text-center">Final Price = {{paidAmount | currency:
+                                                        'EUR'}} </h5>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit"
+                                                        class="btn btn-success border border-dark">Make Payment</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger border border-dark"
+                                                data-dismiss="modal">Cancel Payment</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

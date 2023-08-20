@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col mt-2">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark text-center"
+                        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+                        <tr>
+                            <th>Date</th>
+                            <th>Paid Amount</th>
+                            <th>Order</th>
+                        </tr>
+                    </thead>
+                    <tbody
+                        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+                        <tr class="table-secondary text-center trClass" *ngFor=" let o of orders">
+                            <td>{{o.date}}</td>
+                            <td>{{o.paidAmount}}</td>
+                            <td>
+                                <button class="btn btn-success border-dark" (click)="getOrderDetails(o.oid)">View Order
+                                    Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

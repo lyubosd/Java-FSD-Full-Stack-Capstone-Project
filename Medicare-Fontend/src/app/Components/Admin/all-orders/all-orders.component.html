@@ -1,0 +1,47 @@
+<div style="margin: 0 20px">
+    <div class="row">
+        <div class="col mt-2">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark"
+                        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+                        <tr>
+                            <th>Date</th>
+                            <th>Email</th>
+                            <th>Full Name</th>
+                            <th>Shipping Address</th>
+                            <th>State</th>
+                            <th>Contact</th>
+                            <th>Price</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody
+                        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+                        <tr class="table-secondary trClass" *ngFor="let o of orders">
+                            <td>{{o.date}}</td>
+                            <td>{{o.username}}</td>
+                            <td>{{o.firstName}} {{o.lastName}}</td>
+                            <td>{{o.address}} {{o.district}}-{{o.pinCode}}</td>
+                            <td>{{o.state}}</td>
+                            <td>{{o.contact}}</td>
+                            <td>{{o.paidAmount}}</td>
+                            <td>{{o.paymentMode}}</td>
+                            <td>{{o.status}}</td>
+                            <td><button class="btn btn-danger border-dark" style="width: 150px;margin-bottom: 20px;"
+                                    (click)="deleteOrder(o.oid)">Delete
+                                    Order</button>
+                                <br />
+                                <button class="btn btn-info border-dark" style="width: 150px"
+                                    (click)="getOrderDetails(o.oid)">Show
+                                    Order</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

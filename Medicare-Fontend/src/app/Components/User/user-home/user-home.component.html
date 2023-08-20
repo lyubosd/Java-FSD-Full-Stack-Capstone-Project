@@ -1,0 +1,44 @@
+<div id="background-user-home">
+    <div class="container"
+        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron jumbotron-fluid border border-dark">
+                    <div class="text-center text-black">
+                        <h1>Welcome to Medicare {{name}} !!!</h1>
+                    </div>
+                </div>
+                <div class="card border-primary mb-3 card text-white">
+                    <div class="card-deck">
+                        <div class="card bg-info">
+                            <img class="card-img-top" src="../../../../assets/Images/cart-home.jpg" alt="cart.png"
+                                 style="width:100%; height:250px;">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Your Cart</h4>
+                                <p class="card-text">Show cart items.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a routerLink="/get/cart/details" role="button"
+                                    class="btn btn-success border border-danger btn-block">Go to
+                                    Cart</a>
+                            </div>
+                        </div>
+                        <div class="card border-primary card text-white bg-info">
+                            <img class="card-img-top" src="../../../../assets/Images/all-orders.jpg" alt="all-orders.jpg"
+                                 style="width:100%; height:250px;">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Orders</h4>
+                                <p class="card-text">Show orders.</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-success border border-danger btn-block"
+                                    (click)="getOrders()">Show
+                                    Orders</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

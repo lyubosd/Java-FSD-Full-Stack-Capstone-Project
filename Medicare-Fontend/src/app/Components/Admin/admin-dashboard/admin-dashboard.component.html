@@ -1,0 +1,58 @@
+<div id="background-admin">
+    <br>
+    <div class="container"
+        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h3 class="text-justify" style="font-size: 120%;color: darkblue;">Welcome to Medicare! <span
+                                class="text-primary">{{name}}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="offset-4">{{username}}</span></h3>
+                    </div>
+                    <div class="card border-primary mb-3 card text-white">
+                        <div class="card-deck">
+                            <div class="card bg-info">
+                                <img class="card-img-top" src="../../../../assets/Images/add-medicine.jpg" alt="add-medicine.jpg"
+                                     style="width:100%; height:250px;">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Add Medicine</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <a routerLink="/admin/add-medicine" role="button"
+                                        class="btn btn-success border border-danger btn-block">Add
+                                        Medicine.</a>
+                                </div>
+                            </div>
+                            <div class="card bg-info card text-white">
+                                <img class="card-img-top" src="../../../../assets/Images/all-medicines.jpg" alt="all-medicines.jpg"
+                                     style="width:100%; height:250px;">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Our Medicines</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <a routerLink="/admin/get/all/medicines" role="button"
+                                        class="btn btn-success border border-danger btn-block">Show All Medicines</a>
+                                </div>
+                            </div>
+                            <div class="card border-primary card text-white bg-info">
+                                <img class="card-img-top" src="../../../../assets/Images/all-orders.jpg" alt="all-orders.jpg"
+                                     style="width:100%; height:250px;">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Orders</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <a routerLink="/admin/all/user-orders" role="button"
+                                        class="btn btn-success border border-danger btn-block">Show
+                                        All Orders</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

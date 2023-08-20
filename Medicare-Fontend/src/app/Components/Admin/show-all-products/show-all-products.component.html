@@ -1,0 +1,67 @@
+<div id="show_product">
+    <br>
+    <div class="container"
+        style="border: 3px solid #000000;padding:0; margin-bottom: 1rem;border-radius: 8px;overflow: hidden;">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" routerLink="/get/all/medicines" (click)="onClick()">All Medicines</a>
+            <ul class="navbar-nav ml-auto mx-5">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Sort by
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" role="button" (click)="sortByPriceLowToHigh()">Price: Low To High</a>
+                        <a class="dropdown-item" role="button" (click)="sortByPriceHighToLow()">Price: High To Low</a>
+                        <a class="dropdown-item" role="button" (click)="sortByNameAscending()">Name: A-Z</a>
+                        <a class="dropdown-item" role="button" (click)="sortByNameDescending()">Name: Z-A</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline" (ngSubmit)="getProductByName()">
+                <input class="form-control mr-sm-3" type="text" placeholder="Search" [(ngModel)]="medicineName"
+                    name="medicineName">
+                <button class="btn btn-outline-info" type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="table-responsive">
+            <table class="table table-sm table-dark table-bordered" style="margin: 0">
+                <thead class="thead-light text-center">
+                    <tr>
+                        <th>Medicine</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Price(€)</th>
+                        <th>Total Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of product | paginate :
+                                                {
+                                                    itemsPerPage: tableSize,
+                                                    currentPage: page,
+                                                    totalItems: count
+                                                }">
+                        <td>{{p.name}}</td>
+                        <td>{{p.brand}}</td>
+                        <td>{{p.category}}</td>
+                        <td>€{{p.price}}</td>
+                        <td>{{p.totalAvailable}}</td>
+                        <td>
+                            <div class="btn-group btn-group-toggle">
+                                <button type="button" class="btn btn-outline-success "
+                                    (click)="updateProduct(p.pid)">Update</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    (click)="deleteProduct(p.pid)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+</div>

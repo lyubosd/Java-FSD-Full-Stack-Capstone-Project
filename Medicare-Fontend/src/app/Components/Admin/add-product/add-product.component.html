@@ -1,0 +1,113 @@
+<div id="add_medicine_background">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 mx-auto mt-4 mb-5">
+                <div class="card"
+                    style=" font-size: large; font-family: Arial, Helvetica, sans-serif;background-color: rgba(255, 255, 255, 0.5);">
+                    <div class="card-header" style=" font-family: Arial, Helvetica, sans-serif; font-size: medium;">
+                        <h4 class="text-center" style=" font-size: 200%; font-family: Arial, Helvetica, sans-serif;">
+                            Add Medicine</h4>
+                    </div>
+                    <div class="card-body">
+                        <form #registerationForm="ngForm">
+                            <hr>
+                            <div class="form-group">
+                                <label for="mname">Medicine Name:</label>
+                                <input type="text" class="form-control" required #mname="ngModel"
+                                    placeholder="Medicine name" id="mname" name="name" [(ngModel)]="product.name"
+                                    ngModel>
+                                <span *ngIf="mname.invalid && mname.touched" style="color: red">The medicine name is
+                                    invalid</span>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="bname">Medicine Brand Name:</label>
+                                <input type="text" required #bname="ngModel" class="form-control"
+                                    placeholder="Medicine brand name" id="bname" name="brand"
+                                    [(ngModel)]="product.brand" ngModel>
+                                <span *ngIf="bname.invalid && bname.touched" style="color: red">Invalid Brand
+                                    </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="bcategory">Medicine Category Name:</label>
+                                <input type="text" required #bcategory="ngModel" class="form-control"
+                                    placeholder="Medicine category name" id="bcategory" name="category"
+                                    [(ngModel)]="product.category" ngModel>
+                                <span *ngIf="bcategory.invalid && bcategory.touched" style="color: red">Invalid Category
+                                    </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="desc">Medicine Description:</label>
+                                <input type="text" class="form-control" required #desc="ngModel"
+                                    placeholder="Medicine description" id="desc" name="description"
+                                    [(ngModel)]="product.description" ngModel>
+                                <span *ngIf="desc.invalid && desc.touched" style="color:red">The
+                                    medicine description is invalid</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="stk">Total Stock:</label>
+                                <input type="number" required #stk="ngModel" class="form-control"
+                                    placeholder="Total stock" id="stk" name="totalAvailable"
+                                    [(ngModel)]="product.totalAvailable" ngModel>
+                                <span *ngIf="stk.invalid && stk.touched" style="color: red">Invalid Total Stock</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pc">Price:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">€</span>
+                                    </div>
+                                    <input type="number" required #pc="ngModel" class="form-control" placeholder="Price"
+                                        id="pc" name="Price" [(ngModel)]="product.price" ngModel>
+                                </div>
+                                <span *ngIf="pc.invalid && pc.touched" style="color: red">Invalid Price</span>
+                            </div>
+
+                            <hr>
+                            <div class="text-center">
+                                <div class="btn-group">
+                                    <button (click)="onSubmit()" class="btn btn-primary"
+                                        [disabled]="registerationForm.invalid" data-toggle="modal"
+                                        data-target="#myModal">Add Medicine</button>
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Add a new medicine</h4>
+                                                    <button type="button" class="close" (click)="onClick()"
+                                                        data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <span *ngIf="isValid" style="color:green">{{message}}</span>
+                                                    <span *ngIf="!isValid" style="color: red">{{message}}</span>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                        (click)="onClick()">Close</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
